@@ -95,15 +95,20 @@ class NCycle<T> {
     ) {
       console.log(`This is a ${this.make} ${this.model} NCycle.`);
     } else if (Array.isArray(this.make) && Array.isArray(this.model)) {
+      let foundMatchedItems = false;
       for (const make of this.make) {
         for (const model of this.model) {
           if (make === model) {
             console.log(
-              `This NCycle has ${make} make and ${model} that matches`
+              `This NCycle has ${make} Make and ${model} Model that matches`
             );
+            foundMatchedItems = true;
             break;
           }
         }
+      }
+      if (foundMatchedItems === false) {
+        console.log("This NCycle was not created properly.");
       }
     } else {
       console.log("This NCycle was not created properly.");
@@ -113,31 +118,31 @@ class NCycle<T> {
 
 // Part 4
 const testCycle1 = new NCycle<number>(1, 2, 3);
-console.log("Cycle 1");
+console.log("Cycle 1:");
 // testCycle1.print();
 testCycle1.printAll();
 
 const testCycle2 = new NCycle<string>("This", "That", 4);
-console.log("Cycle 2");
+console.log("Cycle 2:");
 // testCycle2.print();
 testCycle2.printAll();
 
 const testCycle3 = new NCycle<string>("Make", 10, 4);
-console.log("Cycle 3");
+console.log("Cycle 3:");
 // testCycle3.print(4);
 testCycle3.printAll();
 
 const makes4 = ["Volkswagon", "Tesla", "Audi"];
 const models4 = ["Passat", "Model X", "A4"];
 const testCycle4 = new NCycle<string[]>(makes4, models4, 4);
-console.log("Cycle 4");
+console.log("Cycle 4:");
 // testCycle4.print(2);
 testCycle4.printAll();
 
 const makes5 = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 const models5 = [1, 1, 2, 3, 5];
 const testCycle5 = new NCycle<number[]>(makes5, models5, 0);
-console.log("Cycle 5");
+console.log("Cycle 5:");
 // testCycle5.print(7);
 testCycle5.printAll();
 
